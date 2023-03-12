@@ -6,14 +6,14 @@
 
         //Post Properties
         public $id;
-        public $quotation;
-        public $category_id;
-        public $category_name;
-        public $author; //We need to get this still
+        public $quote;
         public $author_id;
+        public $category_id;
+        public $category;
+        public $author; 
 
         // Constructor with DB
-        public function __construc($db) {
+        public function __construct($db) {
             $this->conn = $db;
         }
 
@@ -22,15 +22,17 @@
         public function read(){
             // Create Query
             $query = 'SELECT 
-                c.category as category_name,
-                q.id,
-                q.quote,
-                q.category_id,
-                q.author_id
-            FROM  
-                ' . $this->table . ' q
-            LEFT JOIN
-                categories c on q.category_id = c.id';
+                        q.id,
+                        q.quote,
+                        c.category,
+                        a.author
+                    FROM  
+                    ' . $this->table . ' q
+                    LEFT JOIN
+                        categories c on q.category_id = c.id
+                    LEFT JOIN
+                        authors a on q.author_id = a.id
+                    ';
 
         //Prepared Statement
         $stmt = $this->conn->prepare($query);
