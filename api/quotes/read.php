@@ -24,10 +24,10 @@
             extract($row);
 
             $quote_item = array(
-                'id'            => $id,
-                'quote'         => $quote,
-                'author'        => $author,
-                'category'      => $category
+                'id' => $id,
+                'quote' => $quote,
+                'author' => $author,
+                'category' => $category
             );
 
             //Push to "data"
