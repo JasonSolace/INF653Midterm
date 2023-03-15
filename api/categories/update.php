@@ -21,10 +21,10 @@ $category->category = $data->category;
 //Update quote
 if ($category->update()){
     echo json_encode(
-        array('message' => 'Quote Updated')
+        array('message' => 'Category Updated')
     );
 } else {
     echo json_encode(
-        array('message' => 'Quote Not Updated')
+        array('message' => 'Category Not Updated')
     );
 }
