@@ -16,13 +16,16 @@
     //Get Quote
     $quote->read_single();
 
-    $quote_arr = array(
-        'id' => $quote->id,
-        'quote' => $quote->quote,
-        'category' => $quote->category,
-        'author' => $quote->author
-    );
+    if((isset($quote->id) && isset($quote->quote))){
+        $quote_arr = array(
+            'id' => $quote->id,
+            'quote' => $quote->quote,
+            'category' => $quote->category,
+            'author' => $quote->author
+        );
 
-    //Make JSON
-    print_r((json_encode($quote_arr)));
-    
+        //Make JSON
+        print_r((json_encode($quote_arr)));
+    } else {
+        print_r(json_encode(array("message" => "No Quotes Found")));
+    }

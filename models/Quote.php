@@ -70,11 +70,13 @@
 
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+            if (isset($row['id']) && isset($row['author'])){
             //Set Properties
-            $this->id = $row['id'];
-            $this->quote = $row['quote'];
-            $this->category = $row['category'];
-            $this->author = $row['author'];
+                $this->id = $row['id'];
+                $this->quote = $row['quote'];
+                $this->category = $row['category'];
+                $this->author = $row['author'];
+            }
         }
 
         public function create(){
@@ -143,5 +145,20 @@
             printf("Error: %s.\n", $stmt->error);
 
             return false;
+        }
+
+        //Delete Quote
+        public function delete(){
+            $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
+
+            $stmt = $this->conn->prepare($query);
+
+            $stmt->bindParam(':id', $this->id);
+
+            if ($stmt->execute()){
+                return true;
+            } else {
+                return false;
+            }
         }
     }

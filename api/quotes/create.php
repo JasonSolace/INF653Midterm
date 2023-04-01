@@ -17,13 +17,20 @@
  $quote->category_id = $data->category_id;
  $quote->author_id = $data->author_id;
 
+ if (isset($quote->quote) && isset($quote->author_id) && isset($quote->category_id)){
  //Create post
- if ($quote->create()){
-    echo json_encode(
-        array('message' => 'Quote created')
-    );
- } else {
-    echo json_encode(
-        array('message' => 'Quote not created')
-    );
- }
+    if ($quote->create()){
+        echo json_encode(
+            array(
+                'id' => $quote->id,
+                'quote' => $quote->quote,
+                'author_id' => $quote->author_id,
+                'category_id' => $quote->category_id
+            )
+        );
+    } else {
+        echo json_encode(
+            array('message' => 'Quote not created')
+        );
+    }
+}
