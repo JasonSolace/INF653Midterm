@@ -16,11 +16,13 @@
     //Get Quote
     $author->read_single();
 
-    $author_arr = array(
-        'id' => $author->id,
-        'author' => $author->author
-    );
-
-    //Make JSON
-    print_r((json_encode($author_arr)));
+    if((isset($author->id) && isset($author->author))){
+        $author_arr = array(
+            'id' => $author->id,
+            'author' => $author->author
+        );
+        print_r((json_encode($author_arr)));
+    }else{
+        print_r(json_encode(array("message" => "author_id Not Found")));
+    }
     
