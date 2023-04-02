@@ -22,7 +22,6 @@
     if ($quote->create()){
         echo json_encode(
             array(
-                'id' => $quote->id,
                 'quote' => $quote->quote,
                 'author_id' => $quote->author_id,
                 'category_id' => $quote->category_id
@@ -33,4 +32,16 @@
             array('message' => 'Quote not created')
         );
     }
+} else if(!isset($quote->author_id) && isset($quote->category_id)){
+    echo json_encode(
+        array('message' => 'author_id Not Found')
+    ); 
+}else if(isset($quote->author_id) && !isset($quote->category_id)){
+    echo json_encode(
+        array('message' => 'category_id Not Found')
+    ); 
+}else{
+    echo json_encode(
+        array('message' => 'Missing Required Parameters')
+    ); 
 }

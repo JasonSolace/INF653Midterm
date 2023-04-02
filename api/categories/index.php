@@ -24,5 +24,5 @@ if($method === 'GET'){
     include_once 'update.php';
   }else if($method === 'DELETE'){
     include_once 'delete.php';
-  } 
+  }
 ?>
