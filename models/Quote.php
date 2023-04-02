@@ -106,7 +106,7 @@
 
             //Execute query
             if($stmt->execute()){
-                return true;
+                return $stmt->fetch()["id"];
             } else {
                 printf("Error: %s.\n", $stmt->error);
                 return false;
