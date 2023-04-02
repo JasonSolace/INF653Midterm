@@ -56,8 +56,10 @@
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             //Set Properties
-            $this->id = $row['id'];
-            $this->category = $row['category'];
+            if(isset($row['id']) && isset($row['author'])){
+                $this->id = $row['id'];
+                $this->category = $row['category'];
+            }
         }
 
         public function create(){
