@@ -57,8 +57,8 @@
 
             //Set Properties
             if(isset($row['id']) && isset($row['author'])){
-            $this->id = $row['id'];
-            $this->author = $row['author'];
+                $this->id = $row['id'];
+                $this->author = $row['author'];
             }
         }
 
