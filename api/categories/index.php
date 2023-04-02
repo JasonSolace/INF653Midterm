@@ -13,7 +13,7 @@ if ($method === 'OPTIONS') {
 }
 
 if($method === 'GET'){
-    if(isset($param_passed)){
+    if(isset($param)){ //Check Param
       include_once 'read_single.php';
     }else{
       include_once 'read.php';
